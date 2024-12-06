@@ -15,9 +15,12 @@ let LoadingMessage = document.getElementById("loading");
 LoadingMessage.style.display = "none"; // إخفاء الرسالة بشكل افتراضي
 
 let map; 
-Arrow.onclick = function() {
+Arrow.onclick = function () {
     let ip = Search.value.trim(); // تأكد من أن القيمة ليست فارغة
-    if (ip && !isRequesting) {  // تأكد من أنه لا يوجد طلب جاري حاليًا
+    const ipRegex = /^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$/;
+    const domainRegex = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if ((ipRegex.test(ip) || domainRegex.test(ip)) && !isRequesting) {
         showLoading(true); // إظهار رسالة "Loading..."
         isRequesting = true; // وضع علامة على أنه تم بدء طلب
         getUser(ip);
@@ -25,13 +28,23 @@ Arrow.onclick = function() {
         Swal.fire({
             icon: "warning",
             title: "Oops...",
-            text: "Please enter a valid IP address 🤨",
+            text: "Please enter a valid IP address or domain name 🤨",
+            customClass: {
+                popup: "z-[99999]",
+            },
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Input 😔",
+            text: "The input must be a valid IP address or domain name!",
             customClass: {
                 popup: "z-[99999]",
             },
         });
     }
 };
+
 updateMap(43.6532,-79.3832)
 async function getUser(ip_user) {
     try {
