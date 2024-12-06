@@ -588,10 +588,6 @@ video {
   }
 }
 
-.static {
-  position: static;
-}
-
 .absolute {
   position: absolute;
 }
@@ -638,6 +634,22 @@ video {
 
 .z-\[1111\] {
   z-index: 1111;
+}
+
+.z-\[\] {
+  z-index: ;
+}
+
+.z-\[9999\] {
+  z-index: 9999;
+}
+
+.z-\[99999\] {
+  z-index: 99999;
+}
+
+.z-\[401\] {
+  z-index: 401;
 }
 
 .mx-auto {
@@ -721,6 +733,10 @@ video {
   width: 72px;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .w-80 {
   width: 20rem;
 }
@@ -733,6 +749,10 @@ video {
   width: 257px;
 }
 
+.w-\[53\] {
+  width: 53;
+}
+
 .w-\[53px\] {
   width: 53px;
 }
@@ -743,6 +763,14 @@ video {
 
 .w-7 {
   width: 1.75rem;
+}
+
+.w-72 {
+  width: 18rem;
+}
+
+.w-\[280\] {
+  width: 280;
 }
 
 .w-\[280px\] {
@@ -836,8 +864,20 @@ video {
   background-image: url('');
 }
 
+.bg-\[url\(\'\.\.\/\'\)\] {
+  background-image: url('../');
+}
+
+.bg-\[url\(\'\.\/\'\)\] {
+  background-image: url('./');
+}
+
 .bg-\[url\(\'\.\/images\/\'\)\] {
   background-image: url('./images/');
+}
+
+.bg-\[url\(\'\.\/images\/pattern-bg-mobile\.png\'\)\] {
+  background-image: url('./images/pattern-bg-mobile.png');
 }
 
 .bg-\[url\(\'\.\.\/images\/pattern-bg-mobile\.png\'\)\] {
@@ -860,9 +900,18 @@ video {
   padding: 1.5rem;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .py-3 {
@@ -919,6 +968,42 @@ video {
   color: hsl(0 0% 17% / var(--tw-text-opacity, 1));
 }
 
+@media (min-width: 640px) {
+  .sm\:container {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .sm\:container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .sm\:container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sm\:container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .sm\:container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .sm\:container {
+      max-width: 1536px;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .md\:container {
     width: 100%;
@@ -969,8 +1054,16 @@ video {
     display: block;
   }
 
+  .md\:flex {
+    display: flex;
+  }
+
   .md\:h-\[85px\] {
     height: 85px;
+  }
+
+  .md\:h-\[400px\] {
+    height: 400px;
   }
 
   .md\:w-1\/4 {
@@ -991,6 +1084,10 @@ video {
 
   .md\:w-10 {
     width: 2.5rem;
+  }
+
+  .md\:w-\[\] {
+    width: ;
   }
 
   .md\:w-\[400px\] {

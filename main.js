@@ -22,7 +22,14 @@ Arrow.onclick = function() {
         isRequesting = true; // وضع علامة على أنه تم بدء طلب
         getUser(ip);
     } else if (!ip) {
-        alert("Please enter a valid IP address.");
+        Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "Please enter a valid IP address 🤨",
+            customClass: {
+                popup: "z-[99999]",
+            },
+        });
     }
 };
 updateMap(43.6532,-79.3832)
@@ -50,7 +57,14 @@ async function getUser(ip_user) {
     } catch (error) {
         console.error(error);
         showLoading(false); // إخفاء رسالة "Loading..." في حالة حدوث خطأ
-        alert("Error fetching data. Please try again.");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Error fetching data. Please try again 😔",
+            customClass: {
+                popup: "z-[99999]",
+            },
+        });
     } finally {
         isRequesting = false; // عند الانتهاء من الطلب، إعادة تعيين متغير الطلب
     }
