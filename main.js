@@ -51,7 +51,7 @@ async function getUser(ip_user) {
         // التأخير بين الطلبات
         await delay(2000); // تأخير 2 ثانية قبل كل طلب
         
-        const response = await axios.get(`http://ip-api.com/json/${ip_user}`);
+        const response = await axios.get(`https://ip-api.com/json/${ip_user}`);
         let data = response.data;
         console.log(data);
         Ip.innerHTML = data.query;
