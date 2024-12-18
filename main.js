@@ -12,7 +12,7 @@ let isRequesting = false; // متغير للتحقق من إذا كان هناك
 
 // إضافة رسالة "Loading..." للمستخدم
 let LoadingMessage = document.getElementById("loading");
-LoadingMessage.style.display = "none"; // إخفاء الرسالة بشكل افتراضي
+LoadingMessage.style.display = "none";
 
 let map; 
 Arrow.onclick = function () {
@@ -45,25 +45,24 @@ Arrow.onclick = function () {
     }
 };
 
-updateMap(43.6532,-79.3832)
+updateMap(43,-79)
 async function getUser(ip_user) {
     try {
         // التأخير بين الطلبات
         await delay(2000); // تأخير 2 ثانية قبل كل طلب
-        
-        const response = await axios.get(`https://ip-api.com/json/${ip_user}`);
+
+        const apiKey = "6de35c640782e8e3ec996bef39b0823b";
+        const response = await axios.get(`https://api.ipstack.com/${ip_user}?access_key=${apiKey}`);
         let data = response.data;
         console.log(data);
-        Ip.innerHTML = data.query;
+        Ip.innerHTML = data.ip || "Not available";
         City.innerHTML = data.city || "Not available";
-        Country.innerHTML = data.countryCode || "😔";
-        GeonameId.innerHTML = data.country || "😔";
-        Timezone.innerHTML = data.timezone || "Not available";
-        Isp.innerHTML = data.isp || "😔";
+        Country.innerHTML = data.country_code || "😔";
+        GeonameId.innerHTML = data.country_name || "😔";
+        Timezone.innerHTML = data.region_name|| "Not available";
 
-        if (data.lat && data.lon) {
-            // إذا كانت الإحداثيات موجودة، قم بتحديث الخريطة
-            updateMap(data.lat, data.lon);
+        if (data.latitude && data.longitude) {
+            updateMap(data.latitude, data.longitude);
         }
 
         showLoading(false); // إخفاء رسالة "Loading..."
