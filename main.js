@@ -56,10 +56,10 @@ async function getUser(ip_user) {
         console.log(data);
         Ip.innerHTML = data.query;
         City.innerHTML = data.city || "Not available";
-        Country.innerHTML = data.countryCode || "Not available";
-        GeonameId.innerHTML = data.country || "Not available";
+        Country.innerHTML = data.countryCode || "😔";
+        GeonameId.innerHTML = data.country || "😔";
         Timezone.innerHTML = data.timezone || "Not available";
-        Isp.innerHTML = data.isp || "Not available";
+        Isp.innerHTML = data.isp || "😔";
 
         if (data.lat && data.lon) {
             // إذا كانت الإحداثيات موجودة، قم بتحديث الخريطة
